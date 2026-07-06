@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}AR24 | Tableau de bord{% endblock %}
+{% block content %}
+<section class="container dashboard">
+  <div class="dash-head">
+    <div>
+      <h1 class="ar24-title dash-title">Tableau de bord</h1>
+      <p class="dash-subtitle">Bienvenue, <span class="highlight">{{ name or user }}</span></p>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="ar24-card stat-card">
+      <div class="stat-head"><span>Envois ce mois</span><div class="stat-ico blue">✉</div></div>
+      <div class="stat-value">{{ stats.envois }}</div>
+    </div>
+    <div class="ar24-card stat-card">
+      <div class="stat-head"><span>Reçus</span><div class="stat-ico green">↓</div></div>
+      <div class="stat-value">{{ stats.recus }}</div>
+    </div>
+    <div class="ar24-card stat-card">
+      <div class="stat-head"><span>Brouillons</span><div class="stat-ico orange">✐</div></div>
+      <div class="stat-value">{{ stats.brouillons }}</div>
+    </div>
+    <div class="ar24-card stat-card">
+      <div class="stat-head"><span>Contacts</span><div class="stat-ico red">★</div></div>
+      <div class="stat-value">{{ stats.contacts }}</div>
+    </div>
+  </div>
+
+  <div class="dash-grid">
+    <div class="ar24-card dash-main">
+      <h2 class="dash-h2">Activité récente</h2>
+      <ul class="activity-list">
+        {% for a in activites %}
+        <li>
+          <span>{{ a.texte }}</span>
+          <span class="muted">{{ a.date }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="ar24-card dash-side">
+      <h2 class="dash-h2">Actions rapides</h2>
+      <div class="actions-stack">
+        <button class="ar24-btn ar24-btn-primary full">Nouvel envoi</button>
+        <button class="ar24-btn ar24-btn-outline full">Importer des contacts</button>
+        <button class="ar24-btn ar24-btn-outline full">Paramètres du compte</button>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

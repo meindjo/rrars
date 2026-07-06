@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}AR24{% endblock %}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <header class="ar24-header">
+    <div class="container header-inner">
+      <a href="{{ url_for('home') }}" class="ar24-logo">AR24</a>
+      {% if 'user' not in session %}
+      <div class="header-actions">
+        <a href="{{ url_for('register') }}" class="ar24-btn ar24-btn-filled-sm">Inscription</a>
+        <a href="{{ url_for('login') }}" class="ar24-btn ar24-btn-outline">Se connecter</a>
+      </div>
+      {% else %}
+      <a href="{{ url_for('logout') }}" class="ar24-btn ar24-btn-outline">Déconnexion</a>
+      {% endif %}
+    </div>
+  </header>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="container flash-wrap">
+        {% for category, msg in messages %}
+          <div class="flash flash-{{ category }}">{{ msg }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

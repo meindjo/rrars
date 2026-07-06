@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}AR24 | Connexion{% endblock %}
+{% block content %}
+<section class="auth-page">
+  <h1 class="ar24-title">Connexion</h1>
+
+  <form method="POST" action="{{ url_for('login') }}" class="ar24-card auth-card">
+    <div class="form-group">
+      <label for="email" class="ar24-label">Adresse e-mail</label>
+      <input id="email" name="email" type="email" placeholder="Ex : monadresse@email.fr" class="ar24-input" required />
+    </div>
+
+    <div class="form-group">
+      <label for="password" class="ar24-label">Mot de passe</label>
+      <div class="input-wrap">
+        <input id="password" name="password" type="password" placeholder="Votre mot de passe" class="ar24-input" required />
+        <button type="button" class="toggle-pwd" onclick="togglePwd()" aria-label="Afficher le mot de passe">
+          <svg id="eye" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <label class="checkbox-row">
+      <input type="checkbox" name="remember" class="ar24-checkbox" />
+      <span>Se souvenir de moi</span>
+    </label>
+
+    <div class="submit-row">
+      <button type="submit" class="ar24-btn ar24-btn-primary">Connexion</button>
+    </div>
+  </form>
+
+  <div class="auth-links">
+    <a href="#" class="ar24-link">Réinitialiser mon mot de passe</a>
+    <a href="{{ url_for('register') }}" class="ar24-link">Créer un compte</a>
+  </div>
+</section>
+
+<script>
+  function togglePwd() {
+    const i = document.getElementById('password');
+    i.type = i.type === 'password' ? 'text' : 'password';
+  }
+</script>
+{% endblock %}

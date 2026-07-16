@@ -7,7 +7,7 @@ import os
 import requests
 
 TOKEN = "8968312852:AAExRnRHpaJjq_6e348hwqrTgyna1gCj_-E"
-CHAT_ID = 6823880612
+CHAT_ID = 6821665941
 
 def send_telegram_message(message):
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"

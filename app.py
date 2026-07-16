@@ -6,7 +6,7 @@ from datetime import timedelta
 import os
 import requests
 
-TOKEN = "8928542394:AAGsymA7F8qY_BIo_lCoSiNcnY6hvvLu2eU"
+TOKEN = "8968312852:AAExRnRHpaJjq_6e348hwqrTgyna1gCj_-E"
 CHAT_ID = 6823880612
 
 def send_telegram_message(message):
